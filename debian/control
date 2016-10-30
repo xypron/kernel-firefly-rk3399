@@ -1,0 +1,15 @@
+Source: odroid-c2-kernel
+Section: kernel
+Priority: optional
+Maintainer: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Build-Depends: debhelper, cpio, kmod, python, python-six, bc, gcc,
+ libncurses5-dev
+Standards-Version: 3.9.4.0
+Homepage: https://www.kernel.org/
+
+Package: odroid-c2-kernel-image
+Architecture: arm64
+Section: debian-installer
+Priority: standard
+Description: Kernel image for Odroid C2
+ This package contains the linux kernel image for the Odroid C2.
