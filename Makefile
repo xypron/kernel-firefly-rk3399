@@ -5,7 +5,7 @@ all: prepare build copy
 
 prepare:
 	test -d linux || git clone -v \
-	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-next.git \
+	https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git \
 	linux
 	cd linux && git fetch
 	gpg --list-keys 79BE3E4300411886 || \
