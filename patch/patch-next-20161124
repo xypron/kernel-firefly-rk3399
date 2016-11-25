@@ -1,0 +1,3 @@
+#!/bin/sh
+git am ../patch/0001-stmmac-RTL8211F-Meson-GXBB-TX-throughput-problems.patch 
+
