@@ -34,51 +34,57 @@ build:
 copy:
 	rm linux/deploy -rf
 	mkdir -p linux/deploy
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cp linux/.config linux/deploy/config-$$VERSION
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cd linux && \
 	cp arch/arm64/boot/Image deploy/vmlinuz-$$VERSION
 	cd linux && make modules_install INSTALL_MOD_PATH=deploy
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cd linux && make headers_install \
 	INSTALL_HDR_PATH=deploy/usr/src/linux-headers-$$VERSION
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cd linux && make dtbs_install \
 	INSTALL_DTBS_PATH=deploy/dtbs-$$VERSION
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	mkdir -p -m 755 linux/deploy/lib/firmware/$$VERSION; true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	mv linux/deploy/lib/firmware/* \
 	linux/deploy/lib/firmware/$$VERSION; true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cd linux/deploy && tar -czf $$VERSION-modules-firmware.tar.gz lib
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
 
 install:
 	mkdir -p -m 755 $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cp linux/deploy/vmlinuz-$$VERSION $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cp linux/deploy/config-$$VERSION $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
-	cp linux/deploy/$$VERSION-modules-firmware.tar.gz $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
-	cp linux/deploy/$$VERSION-headers.tar.gz $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	tar -xzf linux/deploy/$$VERSION-modules-firmware.tar.gz -C $(DESTDIR)/
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	tar -xzf linux/deploy/$$VERSION-headers.tar.gz -C $(DESTDIR)/
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
-	update-initramfs -k $$VERSION -u
+	VERSION=$$(cd linux && make -s kernelrelease) && \
+	update-initramfs -k $$VERSION -u -b $(DESTDIR)/boot
+	VERSION=$$(cd linux && make -s kernelrelease) && \
+	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
+	$(DESTDIR)/boot;true
+	VERSION=$$(cd linux && make -s kernelrelease) && \
+	mkimage -A arm64 -O linux -T ramdisk -C none -a 0 -e 0 -n uInitrd \
+	-d $(DESTDIR)/boot/initrd.img-$$VERSION $(DESTDIR)/boot/uInitrd-$$VERSION
+	VERSION=$$(cd linux && make -s kernelrelease) && \
+	mkimage -A arm64 -O linux -T kernel -C none -a 0x1080000 -e 0x1080000 \
+	-n linux-next -d $(DESTDIR)/boot/vmlinuz-$$VERSION \
+	$(DESTDIR)/boot/uImage-$$VERSION
 
 uninstall:
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	rm $(DESTDIR)/lib/modules/$$VERSION -rf
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	rm $(DESTDIR)/lib/firmware/$$VERSION -rf
-	VERSION=$$(cd linux && make --no-print-directory kernelversion) && \
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	rm $(DESTDIR)/usr/src/linux-headers-$$VERSION -rf
 
 clean:
