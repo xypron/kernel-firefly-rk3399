@@ -1,0 +1,62 @@
+From 5a0803bd5ae289fbacd4d207e8c5e6719224ef92 Mon Sep 17 00:00:00 2001
+From: Brian Kim <brian.kim@hardkernel.com>
+Date: Tue, 4 Oct 2016 16:06:43 +0900
+Subject: [PATCH 07/31] ARM64: dts: meson-gxbb-odroidc2: Enable USB Nodes
+
+Enable both gxbb USB controller and add a 5V regulator for the OTG port
+VBUS
+
+Signed-off-by: Brian Kim <brian.kim@hardkernel.com>
+Signed-off-by: Kevin Hilman <khilman@baylibre.com>
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ .../arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts | 29 ++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+index 325b9c5..a45d101 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+@@ -64,6 +64,18 @@
+ 		reg = <0x0 0x0 0x0 0x80000000>;
+ 	};
+ 
++	usb_otg_pwr: regulator-usb-pwrs {
++		compatible = "regulator-fixed";
++
++		regulator-name = "USB_OTG_PWR";
++
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++
++		gpio = <&gpio_ao GPIOAO_5 GPIO_ACTIVE_HIGH>;
++		enable-active-high;
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		blue {
+@@ -98,3 +110,20 @@
+ 	pinctrl-0 = <&i2c_a_pins>;
+ 	pinctrl-names = "default";
+ };
++
++&usb0_phy {
++	status = "okay";
++	phy-supply = <&usb_otg_pwr>;
++};
++
++&usb1_phy {
++	status = "okay";
++};
++
++&usb0 {
++	status = "okay";
++};
++
++&usb1 {
++	status = "okay";
++};
+-- 
+2.1.4
+
