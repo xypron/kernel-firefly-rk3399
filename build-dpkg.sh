@@ -1,4 +1,4 @@
 #!/bin/sh
 make prepare
 make clean
-dpkg-buildpackage
+dpkg-buildpackage -aarm64
