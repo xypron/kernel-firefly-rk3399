@@ -1,5 +1,5 @@
-TAG=next-20161125
-TAGPREFIX=
+TAG=4.9-rc7
+TAGPREFIX=v
 
 all: prepare build copy
 
