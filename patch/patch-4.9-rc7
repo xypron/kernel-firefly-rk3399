@@ -1,3 +1,2 @@
 #!/bin/sh
 git am ../patch/0001-MMC-meson-initial-support-for-GX-platforms.patch
-git am ../patch/0001-Add-Hardkernel-RTC.patch

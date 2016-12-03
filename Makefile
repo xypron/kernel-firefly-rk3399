@@ -1,6 +1,13 @@
 TAG=4.9-rc7
 TAGPREFIX=v
 
+MK_ARCH="${shell uname -m}"
+ifneq ("aarch64", $(MK_ARCH))
+	export ARCH=arm64
+	export CROSS_COMPILE=aarch64-linux-gnu-
+endif
+undefine MK_ARCH
+
 all: prepare build copy
 
 prepare:
