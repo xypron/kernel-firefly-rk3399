@@ -76,15 +76,10 @@ install:
 	VERSION=$$(cd linux && make -s kernelrelease) && \
 	update-initramfs -k $$VERSION -u -b $(DESTDIR)/boot
 	VERSION=$$(cd linux && make -s kernelrelease) && \
+	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$(VERSION)
+	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
-	$(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
-	mkimage -A arm64 -O linux -T ramdisk -C none -a 0 -e 0 -n uInitrd \
-	-d $(DESTDIR)/boot/initrd.img-$$VERSION $(DESTDIR)/boot/uInitrd-$$VERSION
-	VERSION=$$(cd linux && make -s kernelrelease) && \
-	mkimage -A arm64 -O linux -T kernel -C none -a 0x1080000 -e 0x1080000 \
-	-n linux-next -d $(DESTDIR)/boot/vmlinuz-$$VERSION \
-	$(DESTDIR)/boot/uImage-$$VERSION
+	$(DESTDIR)/usr/lib/linux-image-$(VERSION)/;true
 
 uninstall:
 	VERSION=$$(cd linux && make -s kernelrelease) && \
