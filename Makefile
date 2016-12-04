@@ -64,6 +64,7 @@ copy:
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
 
 install:
+	echo "$(ARCH) $(CROSS_COMPILE)"
 	mkdir -p -m 755 $(DESTDIR)/boot;true
 	VERSION=$$(cd linux && make -s kernelrelease) && \
 	cp linux/deploy/vmlinuz-$$VERSION $(DESTDIR)/boot;true
@@ -73,8 +74,6 @@ install:
 	tar -xzf linux/deploy/$$VERSION-modules-firmware.tar.gz -C $(DESTDIR)/
 	VERSION=$$(cd linux && make -s kernelrelease) && \
 	tar -xzf linux/deploy/$$VERSION-headers.tar.gz -C $(DESTDIR)/
-	VERSION=$$(cd linux && make -s kernelrelease) && \
-	update-initramfs -k $$VERSION -u -b $(DESTDIR)/boot
 	VERSION=$$(cd linux && make -s kernelrelease) && \
 	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$(VERSION)
 	VERSION=$$(cd linux && make -s kernelrelease) && \
