@@ -11,3 +11,8 @@ export DH_OPTIONS
 %:
 	dh $@
 
+override_dh_auto_build:
+	make --no-print-directory
+
+override_dh_auto_install:
+	make --no-print-directory install DESTDIR=debian/odroid-c2-kernel-image
