@@ -79,10 +79,10 @@ install:
 	VERSION=$$(linux/deploy/version) && \
 	tar -xzf linux/deploy/$$VERSION-headers.tar.gz -C $(DESTDIR)/
 	VERSION=$$(linux/deploy/version) && \
-	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$(VERSION)
+	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$$VERSION
 	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
-	$(DESTDIR)/usr/lib/linux-image-$(VERSION)/;true
+	$(DESTDIR)/usr/lib/linux-image-$$VERSION/;true
 
 uninstall:
 	VERSION=$$(linux/deploy/version) && \
