@@ -41,51 +41,55 @@ build:
 copy:
 	rm linux/deploy -rf
 	mkdir -p linux/deploy
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	echo "#!/bin/sh" > linux/deploy/version
+	echo "echo \\" >> linux/deploy/version
+	cd linux && make -s kernelrelease >> deploy/version
+	chmod 755 linux/deploy/version
+	VERSION=$$(linux/deploy/version) && \
 	cp linux/.config linux/deploy/config-$$VERSION
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cd linux && \
 	cp arch/arm64/boot/Image deploy/vmlinuz-$$VERSION
 	cd linux && make modules_install INSTALL_MOD_PATH=deploy
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cd linux && make headers_install \
 	INSTALL_HDR_PATH=deploy/usr/src/linux-headers-$$VERSION
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cd linux && make dtbs_install \
 	INSTALL_DTBS_PATH=deploy/dtbs-$$VERSION
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	mkdir -p -m 755 linux/deploy/lib/firmware/$$VERSION; true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	mv linux/deploy/lib/firmware/* \
 	linux/deploy/lib/firmware/$$VERSION; true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cd linux/deploy && tar -czf $$VERSION-modules-firmware.tar.gz lib
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
 
 install:
 	echo "$(ARCH) $(CROSS_COMPILE)"
 	mkdir -p -m 755 $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/vmlinuz-$$VERSION $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/config-$$VERSION $(DESTDIR)/boot;true
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	tar -xzf linux/deploy/$$VERSION-modules-firmware.tar.gz -C $(DESTDIR)/
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	tar -xzf linux/deploy/$$VERSION-headers.tar.gz -C $(DESTDIR)/
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$(VERSION)
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
 	$(DESTDIR)/usr/lib/linux-image-$(VERSION)/;true
 
 uninstall:
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	rm $(DESTDIR)/lib/modules/$$VERSION -rf
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	rm $(DESTDIR)/lib/firmware/$$VERSION -rf
-	VERSION=$$(cd linux && make -s kernelrelease) && \
+	VERSION=$$(linux/deploy/version) && \
 	rm $(DESTDIR)/usr/src/linux-headers-$$VERSION -rf
 
 clean:
