@@ -10,6 +10,9 @@ undefine MK_ARCH
 
 all: prepare build copy
 
+menuconfig:
+	cd linux && make menuconfig
+
 prepare:
 	test -d linux || git clone -v \
 	https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git \
