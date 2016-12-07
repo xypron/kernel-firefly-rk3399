@@ -13,6 +13,22 @@ export DH_OPTIONS
 
 override_dh_auto_build:
 	make --no-print-directory
+	VERSION=$$(linux/deploy/version) && \
+	sed s/@version@/$$VERSION/g \
+	debian/templates/image.preinst.in \
+	> debian/odroid-c2-kernel-image.preinst
+	VERSION=$$(linux/deploy/version) && \
+	sed s/@version@/$$VERSION/g \
+	debian/templates/image.postinst.in \
+	> debian/odroid-c2-kernel-image.postinst
+	VERSION=$$(linux/deploy/version) && \
+	sed s/@version@/$$VERSION/g \
+	debian/templates/image.prerm.in \
+	> debian/odroid-c2-kernel-image.prerm
+	VERSION=$$(linux/deploy/version) && \
+	sed s/@version@/$$VERSION/g \
+	debian/templates/image.postrm.in \
+	> debian/odroid-c2-kernel-image.postrm
 
 override_dh_auto_install:
 	make --no-print-directory install DESTDIR=debian/odroid-c2-kernel-image
