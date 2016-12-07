@@ -83,7 +83,7 @@ index 0000000..80d7b35
 +/ {
 +	compatible = "nexbox,a95x", "amlogic,meson-gxbb";
 +	model = "NEXBOX A95X";
-+	
++
 +	aliases {
 +		serial0 = &uart_AO;
 +	};
