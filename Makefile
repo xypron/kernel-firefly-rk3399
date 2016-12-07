@@ -1,5 +1,6 @@
 TAG=4.9-rc8
 TAGPREFIX=v
+REVISION=001
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
@@ -8,7 +9,12 @@ ifneq ("aarch64", $(MK_ARCH))
 endif
 undefine MK_ARCH
 
+export LOCALVERSION:="-r$(REVISION)-arm64"
+
 all: prepare build copy
+
+foo:
+	echo $(LOCALVERSION)
 
 menuconfig:
 	cd linux && make menuconfig
