@@ -13,8 +13,8 @@ export LOCALVERSION:="-r$(REVISION)-arm64"
 
 all: prepare build copy
 
-foo:
-	echo $(LOCALVERSION)
+oldconfig:
+	cd linux && make oldconfig
 
 menuconfig:
 	cd linux && make menuconfig
