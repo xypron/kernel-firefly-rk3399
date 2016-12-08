@@ -1,6 +1,6 @@
-TAG=4.9-rc8
-TAGPREFIX=v
-REVISION=001
+TAG=next-20161208
+TAGPREFIX=
+REVISION=002
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
