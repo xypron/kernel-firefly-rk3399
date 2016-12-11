@@ -1,5 +1,5 @@
-odroid-c2-kernel (4.9.0.7) unstable; urgency=medium
+odroid-c2-kernel (4.9.0.8) unstable; urgency=medium
 
-  * Kernel 4.9-rc8 next-20161208
+  * Kernel 4.9-rc8 next-20161209
 
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sat, 03 Dec 2016 09:09:06 +0100
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 11 Dec 2016 11:44:42 +0100
