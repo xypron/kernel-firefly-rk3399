@@ -16,19 +16,19 @@ override_dh_auto_build:
 	VERSION=$$(linux/deploy/version) && \
 	sed s/@version@/$$VERSION/g \
 	debian/templates/image.preinst.in \
-	> debian/odroid-c2-kernel-image.preinst
+	> debian/odroid-c2-dev-kernel-image.preinst
 	VERSION=$$(linux/deploy/version) && \
 	sed s/@version@/$$VERSION/g \
 	debian/templates/image.postinst.in \
-	> debian/odroid-c2-kernel-image.postinst
+	> debian/odroid-c2-dev-kernel-image.postinst
 	VERSION=$$(linux/deploy/version) && \
 	sed s/@version@/$$VERSION/g \
 	debian/templates/image.prerm.in \
-	> debian/odroid-c2-kernel-image.prerm
+	> debian/odroid-c2-dev-kernel-image.prerm
 	VERSION=$$(linux/deploy/version) && \
 	sed s/@version@/$$VERSION/g \
 	debian/templates/image.postrm.in \
-	> debian/odroid-c2-kernel-image.postrm
+	> debian/odroid-c2-dev-kernel-image.postrm
 
 override_dh_auto_install:
-	make --no-print-directory install DESTDIR=debian/odroid-c2-kernel-image
+	make --no-print-directory install DESTDIR=debian/odroid-c2-dev-kernel-image
