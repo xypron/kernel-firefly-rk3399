@@ -77,7 +77,6 @@ copy:
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
 
 install:
-	echo "$(ARCH) $(CROSS_COMPILE)"
 	mkdir -p -m 755 $(DESTDIR)/boot;true
 	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/vmlinuz-$$VERSION $(DESTDIR)/boot;true
