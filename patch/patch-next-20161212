@@ -1,0 +1,2 @@
+#!/bin/sh
+git am ../patch/0001-ARM64-dts-meson-gxbb-Add-reserved-memory-zone-and-us.patch
