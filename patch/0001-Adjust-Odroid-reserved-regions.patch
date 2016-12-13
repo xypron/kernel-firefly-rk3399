@@ -1,0 +1,55 @@
+From 2c9dac525f47e30490e729d35cdd9432d1103d01 Mon Sep 17 00:00:00 2001
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Date: Wed, 14 Dec 2016 20:33:43 +0100
+Subject: [PATCH] Adjust Odroid reserved regions
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ .../arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts | 31 +++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+index 238fbeacd330..557eb2f984da 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-odroidc2.dts
+@@ -61,7 +61,36 @@
+ 
+ 	memory@0 {
+ 		device_type = "memory";
+-		reg = <0x0 0x0 0x0 0x80000000>;
++		linux,usable-memory = <0x0 0x01000000 0x0 0x7f000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
++		ramoops@0x23f00000 {
++			compatible = "ramoops";
++			reg = <0x0 0x23f00000 0x0 0x00100000>;
++			record-size	= <0x00020000>;
++			console-size	= <0x00020000>;
++			ftrace-size	= <0x00020000>;
++		};
++
++		secmon: secmon {
++			compatible = "amlogic, aml_secmon_memory";
++			reg = <0x0 0x10000000 0x0 0x00200000>;
++			no-map;
++		};
++
++		/* global autoconfigured region for contiguous allocations */
++		linux,cma {
++			compatible = "shared-dma-pool";
++			reusable;
++			size = <0x00000000 0x0bc00000>;
++			alignment = <0x0 0x400000>;
++			linux,cma-default;
++		};
+ 	};
+ 
+ 	usb_otg_pwr: regulator-usb-pwrs {
+-- 
+2.11.0
+

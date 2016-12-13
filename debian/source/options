@@ -4,3 +4,5 @@ tar-ignore = "linux*"
 tar-ignore = ".git*"
 # ignore log file
 tar-ignore = "job.log"
+# ignore dtc source
+tar-ignore = "dtc"

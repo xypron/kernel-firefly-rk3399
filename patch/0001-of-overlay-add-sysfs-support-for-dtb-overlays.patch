@@ -1,0 +1,36 @@
+From acf61dc8c87787cfada984f33f183083ed3ea8c5 Mon Sep 17 00:00:00 2001
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Date: Wed, 14 Dec 2016 05:56:56 +0100
+Subject: [PATCH] of/overlay: add sysfs support for dtb overlays
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ drivers/of/Kconfig | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/of/Kconfig b/drivers/of/Kconfig
+index ba7b034..b3c98ea 100644
+--- a/drivers/of/Kconfig
++++ b/drivers/of/Kconfig
+@@ -109,6 +109,18 @@ config OF_OVERLAY
+ 	  While this option is selected automatically when needed, you can
+ 	  enable it manually to improve device tree unit test coverage.
+ 
++if OF_OVERLAY
++
++config OF_OVERLAY_SYSFS
++
++	tristate "Sysfs support for device tree overlays"
++	default m
++	depends on SYSFS
++	help
++	  Provide a sysfs interface for device tree overlays.
++
++endif # OF_OVERLAY
++
+ config OF_NUMA
+ 	bool
+ 
+-- 
+2.10.2
+
