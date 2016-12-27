@@ -1,6 +1,6 @@
 TAG=next-20161212
 TAGPREFIX=
-REVISION=023
+REVISION=024
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
