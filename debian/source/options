@@ -7,3 +7,4 @@ tar-ignore = "job.log"
 # ignore dtc source
 tar-ignore = "dtc"
 tar-ignore = "debian/odroid-c2-dev-kernel-image"
+tar-ignore = "debian/odroid-c2-kernel-image"
