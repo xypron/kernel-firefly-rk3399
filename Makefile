@@ -1,6 +1,6 @@
-TAG=next-20161212
+TAG=next-20170125
 TAGPREFIX=
-REVISION=024
+REVISION=000
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
@@ -41,11 +41,6 @@ prepare:
 	gpg --keyserver keys.gnupg.net --recv-key 89F91C0A41D5C07A
 	gpg --list-keys C481DBBC2C051AC4 || \
 	gpg --keyserver keys.gnupg.net --recv-key C481DBBC2C051AC4
-	test -d dtc || git clone -v \
-	https://git.kernel.org/pub/scm/utils/dtc/dtc.git \
-	dtc 
-	test -f dtc/dtc || \
-	( cd dtc && make all )
 
 build:
 	cd linux && git verify-tag $(TAGPREFIX)$(TAG) 2>&1 | \
@@ -64,8 +59,6 @@ build:
 	cp config/config-$(TAG) linux/.config
 	cd linux && make scripts
 	cd linux && make oldconfig
-	cp dtc/dtc linux/scripts/dtc/dtc
-	touch linux/scripts/dtc/dtc
 	cd linux && DTC_FLAGS='-@' make -j6 Image firmware modules dtbs
 
 copy:
