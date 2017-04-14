@@ -1,5 +1,5 @@
-odroid-c2-dev-kernel (4.10.0.1) unstable; urgency=medium
+odroid-c2-dev-kernel (4.10.0.2) unstable; urgency=medium
 
   * Kernel 4.10 next-20170125
 
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 29 Jan 2017 10:04:23 +0100
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Fri, 14 Apr 2017 11:26:15 +0200
