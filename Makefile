@@ -1,5 +1,5 @@
-TAG=next-20170503
-TAGPREFIX=
+TAG=4.12-rc1
+TAGPREFIX=v
 REVISION=001
 
 MK_ARCH="${shell uname -m}"
@@ -30,7 +30,7 @@ dtbs:
 
 prepare:
 	test -d linux || git clone -v \
-	https://www.xypron.de/git/linux-dt-ov-sysfs.git \
+	https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git \
 	linux
 	cd linux && git fetch
 	gpg --list-keys 79BE3E4300411886 || \
