@@ -9,6 +9,8 @@
 //		target-path = "/soc/cbus@c1100000/i2c@8500"
 		__overlay__ {
 			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
 			pcf8563: pcf8563@51 {
 				status = "okay";
 				compatible = "nxp,pcf8563";
