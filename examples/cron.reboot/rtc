@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+modprobe ov_sysfs
+echo /boot/rtc.dtbo > /sys/firmware/devicetree/overlays/load

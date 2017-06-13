@@ -11,7 +11,10 @@ undefine MK_ARCH
 
 export LOCALVERSION:=-r$(REVISION)-arm64
 
-all: prepare build copy
+all:
+	make prepare
+	make build
+	make copy
 
 oldconfig:
 	cd linux && make oldconfig
@@ -60,6 +63,7 @@ build:
 	cd linux && make scripts
 	cd linux && make oldconfig
 	cd linux && DTC_FLAGS='-@' make -j6 Image firmware modules dtbs
+	linux/scripts/dtc/dtc -O dtb -o rtc.dtbo -@ devicetree-overlays/rtc.dts
 
 copy:
 	rm linux/deploy -rf
@@ -89,6 +93,7 @@ copy:
 	cd linux/deploy && tar -czf $$VERSION-modules-firmware.tar.gz lib
 	VERSION=$$(linux/deploy/version) && \
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
+	cp rtc.dtbo linux/deploy
 
 install:
 	mkdir -p -m 755 $(DESTDIR)/boot;true
@@ -105,6 +110,7 @@ install:
 	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
 	$(DESTDIR)/usr/lib/linux-image-$$VERSION/amlogic/;true
+	cp linux/deploy/rtc.dtbo $(DESTDIR)/boot/
 
 uninstall:
 	VERSION=$$(linux/deploy/version) && \
@@ -117,4 +123,5 @@ uninstall:
 clean:
 	test -d linux && cd linux && rm -f .config || true
 	test -d linux && cd linux && git clean -df || true
+	rm -f rtc.dtbo
 
