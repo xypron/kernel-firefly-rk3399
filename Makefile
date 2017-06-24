@@ -9,7 +9,7 @@ ifneq ("aarch64", $(MK_ARCH))
 endif
 undefine MK_ARCH
 
-export LOCALVERSION:=-r$(REVISION)-arm64
+export LOCALVERSION:=-D$(REVISION)-arm64
 
 all:
 	make prepare
