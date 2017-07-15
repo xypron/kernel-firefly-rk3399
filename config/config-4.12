@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.12.0-rc6 Kernel Configuration
+# Linux/arm64 4.12.0 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -3037,11 +3037,12 @@ CONFIG_HAVE_ARM_SMCCC=y
 #
 # EFI (Extensible Firmware Interface) Support
 #
-# CONFIG_EFI_VARS is not set
+CONFIG_EFI_VARS=m
 CONFIG_EFI_ESRT=y
 CONFIG_EFI_PARAMS_FROM_FDT=y
 CONFIG_EFI_RUNTIME_WRAPPERS=y
 CONFIG_EFI_ARMSTUB=y
+# CONFIG_EFI_BOOTLOADER_CONTROL is not set
 # CONFIG_EFI_CAPSULE_LOADER is not set
 # CONFIG_EFI_TEST is not set
 CONFIG_MESON_SM=y
