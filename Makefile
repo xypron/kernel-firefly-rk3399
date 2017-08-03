@@ -1,6 +1,6 @@
-TAG=4.12
+TAG=4.13-rc3
 TAGPREFIX=v
-REVISION=008
+REVISION=001
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
@@ -33,7 +33,7 @@ dtbs:
 
 prepare:
 	test -d linux || git clone -v \
-	https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git \
+	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git \
 	linux
 	cd linux && git fetch
 	gpg --list-keys 79BE3E4300411886 || \
@@ -110,7 +110,9 @@ install:
 	VERSION=$$(linux/deploy/version) && \
 	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
 	$(DESTDIR)/usr/lib/linux-image-$$VERSION/amlogic/;true
-	cp linux/deploy/rtc.dtbo $(DESTDIR)/boot/
+	VERSION=$$(linux/deploy/version) && \
+	cp linux/deploy/rtc.dtbo \
+	$(DESTDIR)/usr/lib/linux-image-$$VERSION/;true
 
 uninstall:
 	VERSION=$$(linux/deploy/version) && \
@@ -119,9 +121,10 @@ uninstall:
 	rm $(DESTDIR)/lib/firmware/$$VERSION -rf
 	VERSION=$$(linux/deploy/version) && \
 	rm $(DESTDIR)/usr/src/linux-headers-$$VERSION -rf
+	VERSION=$$(linux/deploy/version) && \
+	rm $(DESTDIR)/usr/src/linux-image-$$VERSION -rf
 
 clean:
 	test -d linux && cd linux && rm -f .config || true
 	test -d linux && cd linux && git clean -df || true
-	rm -f rtc.dtbo
 
