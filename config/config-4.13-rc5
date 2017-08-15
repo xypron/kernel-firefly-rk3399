@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.13.0-rc3 Kernel Configuration
+# Linux/arm64 4.13.0-rc5 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -1382,6 +1382,7 @@ CONFIG_DWMAC_MESON=y
 # CONFIG_NET_VENDOR_WIZNET is not set
 # CONFIG_NET_VENDOR_SYNOPSYS is not set
 CONFIG_MDIO_DEVICE=y
+CONFIG_MDIO_BUS=y
 # CONFIG_MDIO_BCM_UNIMAC is not set
 CONFIG_MDIO_BITBANG=y
 # CONFIG_MDIO_BUS_MUX_GPIO is not set
@@ -2977,7 +2978,6 @@ CONFIG_ARM_SMMU=y
 #
 # CONFIG_SUNXI_SRAM is not set
 # CONFIG_SOC_TI is not set
-# CONFIG_SOC_ZTE is not set
 # CONFIG_PM_DEVFREQ is not set
 CONFIG_EXTCON=y
 

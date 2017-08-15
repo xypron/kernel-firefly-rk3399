@@ -1,5 +1,5 @@
-odroid-c2-dev-kernel (4.13.0.1) unstable; urgency=medium
+odroid-c2-dev-kernel (4.13.0.2) unstable; urgency=medium
 
-  * Kernel 4.13-rc3
+  * Kernel 4.13-rc5
 
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Thu, 03 Aug 2017 23:38:13 +0200
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Tue, 15 Aug 2017 19:11:10 +0200
