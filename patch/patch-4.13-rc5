@@ -1,5 +1,0 @@
-#!/bin/sh
-git am ../patch/0001-of-overlay-add-API-function-to-count-and-pop-last.patch
-git am ../patch/0002-of-overlay-sysfs-based-ABI-for-dt-overlays.patch
-git am ../patch/0003-of-overlay-documentation-for-sysfs-ABI.patch
-git am ../patch/0004-of-overlay-test-count-and-destroy_last.patch

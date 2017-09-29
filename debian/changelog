@@ -1,5 +1,5 @@
-odroid-c2-dev-kernel (4.13.0.2) unstable; urgency=medium
+firefly-rk3399-dev-kernel (4.14.0.1) unstable; urgency=medium
 
-  * Kernel 4.13-rc5
+  * Kernel 4.14-rc2 
 
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Tue, 15 Aug 2017 19:11:10 +0200
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Fri, 29 Sep 2017 22:29:12 +0200

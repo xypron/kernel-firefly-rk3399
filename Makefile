@@ -1,6 +1,6 @@
-TAG=4.13-rc5
+TAG=4.14-rc2
 TAGPREFIX=v
-REVISION=002
+REVISION=001
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
@@ -63,7 +63,6 @@ build:
 	cd linux && make scripts
 	cd linux && make oldconfig
 	cd linux && DTC_FLAGS='-@' make -j6 Image firmware modules dtbs
-	linux/scripts/dtc/dtc -O dtb -o rtc.dtbo -@ devicetree-overlays/rtc.dts
 
 copy:
 	rm linux/deploy -rf
