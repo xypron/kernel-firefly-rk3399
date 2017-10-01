@@ -33,7 +33,7 @@ dtbs:
 
 prepare:
 	test -d linux || git clone -v \
-	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git \
+	https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git \
 	linux
 	cd linux && git fetch
 	gpg --list-keys 79BE3E4300411886 || \
