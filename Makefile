@@ -92,7 +92,6 @@ copy:
 	cd linux/deploy && tar -czf $$VERSION-modules-firmware.tar.gz lib
 	VERSION=$$(linux/deploy/version) && \
 	cd linux/deploy && tar -czf $$VERSION-headers.tar.gz usr
-	cp rtc.dtbo linux/deploy
 
 install:
 	mkdir -p -m 755 $(DESTDIR)/boot;true
@@ -107,10 +106,7 @@ install:
 	VERSION=$$(linux/deploy/version) && \
 	mkdir -p -m 755 $(DESTDIR)/usr/lib/linux-image-$$VERSION/amlogic
 	VERSION=$$(linux/deploy/version) && \
-	cp linux/deploy/dtbs-$$VERSION/amlogic/meson-gxbb-odroidc2.dtb \
-	$(DESTDIR)/usr/lib/linux-image-$$VERSION/amlogic/;true
-	VERSION=$$(linux/deploy/version) && \
-	cp linux/deploy/rtc.dtbo \
+	cp -R linux/deploy/dtbs-$$VERSION/* \
 	$(DESTDIR)/usr/lib/linux-image-$$VERSION/;true
 
 uninstall:

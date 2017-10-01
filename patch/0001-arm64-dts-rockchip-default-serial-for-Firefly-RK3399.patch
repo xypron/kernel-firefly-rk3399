@@ -21,7 +21,7 @@ index 7fd4bfcaa38e..27286204516b 100644
  
 +	chosen {
 +		stdout-path = "serial2:1500000n8";
-+	}
++	};
 +
  	backlight: backlight {
  		compatible = "pwm-backlight";
