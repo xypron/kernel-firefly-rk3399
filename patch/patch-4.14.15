@@ -1,2 +1,2 @@
 #!/bin/sh
-git am ../../patch/0001-arm64-dts-rockchip-default-serial-for-Firefly-RK3399.patch
+git am ../patch/0001-arm64-dts-rockchip-default-serial-for-Firefly-RK3399.patch
