@@ -1,3 +1,9 @@
+firefly-rk3399-dev-kernel (4.15.1.1) unstable; urgency=medium
+
+  * Kernel 4.15.1 
+
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 04 Feb 2018 21:22:38 +0100
+
 firefly-rk3399-dev-kernel (4.15.0.1) unstable; urgency=medium
 
   * Kernel 4.15 
