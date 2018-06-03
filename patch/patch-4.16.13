@@ -1,4 +1,4 @@
 #!/bin/sh
 git am --abort || true
 
-git am ../patch/add 0001-arm64-dts-rockchip-correct-voltage-selector-Firefly-.patch
+git am ../patch/0001-arm64-dts-rockchip-correct-voltage-selector-Firefly-.patch
