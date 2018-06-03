@@ -1,0 +1,30 @@
+From 45aeb72f1178c504a1af04fba543662cf1fa0a29 Mon Sep 17 00:00:00 2001
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Date: Sun, 3 Jun 2018 23:52:56 +0200
+Subject: [PATCH 1/1] arm64: dts: rockchip: correct voltage selector
+ Firefly-RK3399
+
+The Firefly-RK3399 board cannot boot without blacklisting the fan53555
+driver due to an incorrectly chosen voltage selector register.
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 4f28628aa091..50940ef844a7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -458,7 +458,7 @@
+ 	vdd_cpu_b: regulator@40 {
+ 		compatible = "silergy,syr827";
+ 		reg = <0x40>;
+-		fcs,suspend-voltage-selector = <0>;
++		fcs,suspend-voltage-selector = <1>;
+ 		regulator-name = "vdd_cpu_b";
+ 		regulator-min-microvolt = <712500>;
+ 		regulator-max-microvolt = <1500000>;
+-- 
+2.17.1
+
