@@ -1,6 +1,6 @@
-TAG=4.16.13
+TAG=4.17
 TAGPREFIX=v
-REVISION=002
+REVISION=001
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
@@ -32,9 +32,10 @@ dtbs:
 	cd linux && DTC_FLAGS='-@' make dtbs
 
 prepare:
-	test -d linux || git clone -v \
-	https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git \
-	linux
+	test -d linux-stable || git clone -v \
+	https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git \
+	linux-stable
+	test -d linux || ln -s linux-stable linux
 	cd linux && git fetch
 	gpg --list-keys 79BE3E4300411886 || \
 	gpg --keyserver keys.gnupg.net --recv-key 79BE3E4300411886
