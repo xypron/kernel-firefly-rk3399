@@ -6,6 +6,9 @@ MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
 	export ARCH=arm64
 	export CROSS_COMPILE=aarch64-linux-gnu-
+else
+	undefine ARCH
+	undefine CROSS_COMPILE
 endif
 undefine MK_ARCH
 
