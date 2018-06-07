@@ -1,0 +1,5 @@
+firefly-rk3399-exp-kernel (4.17.0.1) unstable; urgency=medium
+
+  * Kernel 4.17 
+
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Thu, 07 Jun 2018 04:16:41 +0200
