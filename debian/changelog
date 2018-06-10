@@ -1,3 +1,9 @@
+firefly-rk3399-dev-kernel (4.17.0.2) unstable; urgency=medium
+
+  * Enable further modules
+
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 10 Jun 2018 15:09:42 +0200
+
 firefly-rk3399-dev-kernel (4.17.0.1) unstable; urgency=medium
 
   * Kernel 4.17 
