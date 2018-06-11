@@ -3,7 +3,7 @@ TAGPREFIX=v
 REVISION=002
 
 # Use twice the number of processors as number of parallel processes
-NPROC:= $(shell echo $$(( 2 * $$(nproc) )) )
+NPROC:="$(shell echo $$(( 2 * $$(nproc) )) )"
 
 MK_ARCH="${shell uname -m}"
 ifneq ("aarch64", $(MK_ARCH))
