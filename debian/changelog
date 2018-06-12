@@ -1,47 +1,5 @@
-firefly-rk3399-dev-kernel (4.17.0.2) unstable; urgency=medium
+firefly-rk3399-dev-kernel (4.17.1.1) unstable; urgency=medium
 
-  * Enable further modules
+  * Kernel 4.17.1
 
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 10 Jun 2018 15:09:42 +0200
-
-firefly-rk3399-dev-kernel (4.17.0.1) unstable; urgency=medium
-
-  * Kernel 4.17 
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Mon, 04 Jun 2018 17:57:44 +0000
-
-firefly-rk3399-dev-kernel (4.16.0.3) unstable; urgency=medium
-
-  * Kernel 4.16.13 
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Mon, 04 Jun 2018 00:01:50 +0200
-
-firefly-rk3399-dev-kernel (4.16.0.2) unstable; urgency=medium
-
-  * Kernel 4.16
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Wed, 04 Apr 2018 22:01:31 +0200
-
-firefly-rk3399-dev-kernel (4.15.1.1) unstable; urgency=medium
-
-  * Kernel 4.15.1 
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 04 Feb 2018 21:22:38 +0100
-
-firefly-rk3399-dev-kernel (4.15.0.1) unstable; urgency=medium
-
-  * Kernel 4.15 
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Mon, 29 Jan 2018 21:10:41 +0000
-
-firefly-rk3399-dev-kernel (4.14.15.2) unstable; urgency=medium
-
-  * Kernel 4.14.15
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Sun, 28 Jan 2018 16:08:32 +0100
-
-firefly-rk3399-dev-kernel (4.14.0.1) unstable; urgency=medium
-
-  * Kernel 4.14-rc2 
-
- -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Fri, 29 Sep 2017 22:29:12 +0200
+ -- Heinrich Schuchardt <xypron.glpk@gmx.de>  Tue, 12 Jun 2018 18:21:24 +0200
