@@ -1,0 +1,32 @@
+From a16b1687676995f90371eb0311758801ada82242 Mon Sep 17 00:00:00 2001
+From: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Date: Sat, 30 Jun 2018 06:05:04 +0200
+Subject: [PATCH 1/1] arm64: dts: rockchip: enable RTC on Firefly-RK3399
+
+The Firefly-RK3399 board provides a TT8563 real time clock which is
+compatible to the NXP PCF8563.
+
+Signed-off-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 50940ef844a7..f3a989bbcb3c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -272,6 +272,11 @@
+ 	i2c-scl-falling-time-ns = <4>;
+ 	status = "okay";
+ 
++	pcf8563@51 {
++		compatible = "nxp,pcf8563";
++		reg = <0x51>;
++	};
++
+ 	rk808: pmic@1b {
+ 		compatible = "rockchip,rk808";
+ 		reg = <0x1b>;
+-- 
+2.17.1
+
