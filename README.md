@@ -1,7 +1,7 @@
-<h1>kernel-odroid-c2</h1>
+<h1>kernel-firefly-rk3399</h1>
 
 This package provides scripts to build the Linux kernel for the
-Odroid C2.
+Firefly RK3399.
 
 <h2>Debian package</h2>
 
@@ -10,13 +10,13 @@ Call ./build-dpkg.sh to build a Debian package.
 The package can be installed with
 
 ```
-sudo dpkg -i odroid-c2-kernel-image_<version>_arm64.deb
+sudo dpkg -i firefly-rk3399-dev-kernel-image_<version>_arm64.deb
 ```
 
 It can be uninstalled with
 
 ```
-sudo apt-get remove odroid-c2-kernel-image
+sudo apt-get remove firefly-rk3399-dev-kernel-image
 ```
 
 The Debian package installation routine shows a list of available
