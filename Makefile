@@ -76,7 +76,7 @@ copy:
 	mkdir -p linux/deploy
 	echo '#!/bin/sh' > linux/deploy/version
 	echo 'echo \' >> linux/deploy/version
-	cd linux && make -s kernelrelease >> deploy/version
+	cd linux && make -s --no-print-directory kernelrelease >> deploy/version
 	chmod 755 linux/deploy/version
 	VERSION=$$(linux/deploy/version) && \
 	cp linux/.config linux/deploy/config-$$VERSION
